@@ -1,13 +1,17 @@
 <div class="game-container">
-  <h1>Higher or Lower</h1>
- 
-  <!-- <div *ngIf="gameState?.currentCard">
-    <p><strong>Current Card:</strong> {{ gameState.currentCard }}</p>
-  </div> -->
+  <h1>H I G H E R / L O W E R</h1>
+
 
   <div class="score-container" *ngIf="gameState?.score !== undefined">
+    <div class="score-box">
     <p><strong>Score:</strong> {{ gameState.score }}</p>
   </div>
+  </div>
+<div class="jokers-container">
+  <button class="jokers-button" (click)="toggleJokers()">
+    {{ includeJokers ? 'Remove Jokers' : 'Add Jokers' }}
+  </button>
+</div>
 
   <div *ngIf="gameState?.currentCard">
   <div class="card-container">
@@ -19,12 +23,26 @@
           [ngClass]="{
             'red-suit': gameState?.currentCard?.suit === 'Hearts' || gameState?.currentCard?.suit === 'Diamonds',
             'black-suit': gameState?.currentCard?.suit === 'Clubs' || gameState?.currentCard?.suit === 'Spades'
-          }">{{ convertRank(gameState.currentCard.rank) }}</span>
+          }">
+           <ng-container *ngIf="!isJoker(gameState.currentCard)">
+            {{ convertRank(gameState.currentCard.rank) }}
+          </ng-container>
+          <ng-container *ngIf="isJoker(gameState.currentCard)">
+            <i class="bi bi-star-fill"></i>
+          </ng-container>
+          </span>
         <span class="card-rank"
         [ngClass]="{
           'red-suit': gameState?.currentCard?.suit === 'Hearts' || gameState?.currentCard?.suit === 'Diamonds',
           'black-suit': gameState?.currentCard?.suit === 'Clubs' || gameState?.currentCard?.suit === 'Spades'
-        }">{{ convertRank(gameState.currentCard.rank) }}</span>
+        }">
+        <ng-container *ngIf="!isJoker(gameState.currentCard)">
+          {{ convertRank(gameState.currentCard.rank) }}
+        </ng-container>
+        <ng-container *ngIf="isJoker(gameState.currentCard)">
+          <i class="bi bi-star-fill"></i>
+        </ng-container>
+      </span>
       </div>
       <div class="card-body">
         <!-- Central rank representation -->
@@ -53,12 +71,26 @@
         [ngClass]="{
           'red-suit': gameState?.currentCard?.suit === 'Hearts' || gameState?.currentCard?.suit === 'Diamonds',
           'black-suit': gameState?.currentCard?.suit === 'Clubs' || gameState?.currentCard?.suit === 'Spades'
-        }">{{ convertRank(gameState.currentCard.rank) }}</span>
+        }">
+        <ng-container *ngIf="!isJoker(gameState.currentCard)">
+          {{ convertRank(gameState.currentCard.rank) }}
+        </ng-container>
+        <ng-container *ngIf="isJoker(gameState.currentCard)">
+          <i class="bi bi-star-fill"></i>
+        </ng-container>
+      </span>
         <span class="card-rank"
         [ngClass]="{
           'red-suit': gameState?.currentCard?.suit === 'Hearts' || gameState?.currentCard?.suit === 'Diamonds',
           'black-suit': gameState?.currentCard?.suit === 'Clubs' || gameState?.currentCard?.suit === 'Spades'
-        }">{{ convertRank(gameState.currentCard.rank) }}</span>
+        }">
+        <ng-container *ngIf="!isJoker(gameState.currentCard)">
+          {{ convertRank(gameState.currentCard.rank) }}
+        </ng-container>
+        <ng-container *ngIf="isJoker(gameState.currentCard)">
+          <i class="bi bi-star-fill"></i>
+        </ng-container>
+      </span>
       </div>
     </div>
   </div>

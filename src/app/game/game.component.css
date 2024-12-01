@@ -1,17 +1,21 @@
 .game-container {
     text-align: center;
-    /* background-color: #023047; */
     width: 100%;
+    height: 100vh;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    background-color: #003566;
   }
 
   h1{
-    padding: 0.5rem;
+    padding: 1rem;
     color:white;
-    background-color: #4c63af;
+    background-color: #003566;
+    margin-top: 0;
   }
+
+  
   
   button{
     background-color: #219EBC;
@@ -26,23 +30,23 @@
   .guess-buttons{
     font-size: 30px;
     font-weight: bold;
-    padding: 1.5rem;
+    padding: 1rem;
+    border: solid 4px #219EBC;
+    background-color: #003566;
+  }
+
+  .guess-buttons:hover{
+    background-color: #219EBC;
+    color: white;
   }
 
   .guess-buttons:disabled{
     background-color: #6D6875;
+    border: solid 4px #6D6875;
   }
 
-  /* .start-new-button{
-    background-color:  #ffb703;
-    position: absolute;
-    left: 50%;
-    top: 90%;
-    transform: translate(-50%, -50%);
-  } */
-
   .start-new-button:hover {
-    background-color:#fb8500;
+    background-color:#ffb703;
     color: white;
   }
 
@@ -56,7 +60,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding-bottom: 3rem;
   }
   
   .card {
@@ -139,7 +143,7 @@
   }
   
   .start-new-button {
-    background-color: #ffb703;
+    background-color: #fb8500;
     font-size: 20px;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -149,14 +153,26 @@
   .score-container {
     display:flex;
     justify-content: center;
-    align-items: center;
-    padding-top: 0.5rem;
-    background-color:#219EBC;
+    flex-direction: row;
+    align-items:normal;
+    
     color: white;
     line-height: 1rem;
     font-size: 20px;
     text-align: center;
-    padding: 0.5rem;
+    width: 100%;
+  }
+
+  .score-box{
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    background-color:#003566;
+    border: solid 3px white;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 0.5rem;
+    margin-bottom: 3rem;
   }
 
   .correct-answer {
@@ -165,14 +181,9 @@
     color: white;
     margin-top:2rem;
     padding: 0.5rem;
-    width: 15%;
     justify-content: center;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    left: 50%;
-    top:77%;
-    transform: translate(-50%, -50%);
     border-radius: 0.5rem;
   }
   
@@ -188,5 +199,20 @@
     border-radius: 0.5rem;
   }
 
+  .jokers-button {
+    position: absolute;
+    top: 5rem;
+    left: 0.5rem;
+    font-size: 15px;
+    padding: 1rem;
+    border: 3px solid white;
+    color:white;
+    font-weight: 700;
+    background-color:#003566;
+  }
 
- 
+  .jokers-button:hover {
+    background-color: #219EBC;
+    color: white;
+  }
+

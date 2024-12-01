@@ -10,8 +10,8 @@ export class GameService {
 
   constructor(private http: HttpClient) { }
 
-  startGame(): Observable<any> {
-    return this.http.post(`${this.apiUrl}/start`, {});
+  startGame(includeJokers: boolean): Observable<any> {
+    return this.http.post(`${this.apiUrl}/start`, includeJokers);
   }
 
   makeGuess(guess: string): Observable<any> {

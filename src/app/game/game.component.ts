@@ -12,6 +12,7 @@ export class GameComponent {
   resultMessage: string = '';
   currentCard: { rank: string, suit: string } = { rank: '', suit: '' };
   gameOver: boolean = false;
+  includeJokers: boolean = false;
 
     // A map for face card conversions
     rankMap: { [key: number]: string } = {
@@ -21,14 +22,23 @@ export class GameComponent {
       13: 'K'
     };
 
+    isJoker(card: any): boolean {
+      return card.suit === 'Joker';
+    }  
+
   constructor(private gameService: GameService) { }
+
+toggleJokers() {
+this.includeJokers = !this.includeJokers;
+ this.startNewGame();
+ }
 
   ngOnInit(): void {
     this.startNewGame();
   }
 
   startNewGame(): void {
-    this.gameService.startGame().subscribe(
+    this.gameService.startGame(this.includeJokers).subscribe(
       (data) => {
         this.gameState = data;
         this.resultMessage = '';
