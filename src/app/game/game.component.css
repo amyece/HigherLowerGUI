@@ -1,218 +1,215 @@
+/* Overall this CSS could be tidied up, some classes could be combined as they have the same styling */
+
 .game-container {
-    text-align: center;
-    width: 100%;
-    height: 100vh;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #003566;
-  }
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #003566;
+}
 
-  h1{
-    padding: 1rem;
-    color:white;
-    background-color: #003566;
-    margin-top: 0;
-  }
+h1 {
+  padding: 1rem;
+  color: white;
+  background-color: #003566;
+  margin-top: 0;
+}
 
-  
-  
-  button{
-    background-color: #219EBC;
-    color: white;
-    font-size: 20px;
-    padding: 1rem;
-    margin: 0.5rem;
-    border-radius: 0.5rem;
-    border: none;
-  }
+button {
+  background-color: #219ebc;
+  color: white;
+  font-size: 20px;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+}
 
-  .guess-buttons{
-    font-size: 30px;
-    font-weight: bold;
-    padding: 1rem;
-    border: solid 4px #219EBC;
-    background-color: #003566;
-  }
+.guess-buttons {
+  font-size: 30px;
+  font-weight: bold;
+  padding: 1rem;
+  border: solid 4px #219ebc;
+  background-color: #003566;
+}
 
-  .guess-buttons:hover{
-    background-color: #219EBC;
-    color: white;
-  }
+.guess-buttons:hover {
+  background-color: #219ebc;
+  color: white;
+}
 
-  .guess-buttons:disabled{
-    background-color: #6D6875;
-    border: solid 4px #6D6875;
-  }
+.guess-buttons:disabled {
+  background-color: #6d6875;
+  border: solid 4px #6d6875;
+}
 
-  .start-new-button:hover {
-    background-color:#ffb703;
-    color: white;
-  }
+.start-new-button:hover {
+  background-color: #ffb703;
+  color: white;
+}
 
-  button:hover {
-    background-color: #4c63af;
-    color: white;
-  }
+button:hover {
+  background-color: #4c63af;
+  color: white;
+}
 
-  .card-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 3rem;
-  }
-  
-  .card {
-    width: 150px;
-    height: 200px;
-    border: 2px solid #000;
-    border-radius: 8px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5rem;
-  }
-  
-  .card-header, .card-footer {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-weight: bold;
-    font-size: 25px;
-    padding-right: 1rem;
-    padding-left: 1rem;
-  }
-  
-  
-  .card-body {
+.card-container {
   display: flex;
-  flex-direction: column;  /* Stack items vertically */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3rem;
+}
+
+.card {
+  width: 150px;
+  height: 200px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.card-header,
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-weight: bold;
+  font-size: 25px;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
   justify-content: center;
   align-items: center;
   flex-grow: 1;
   font-size: 25px;
   font-weight: bold;
-  }
-  
-  .card-rank-body {
-    display: flex;
-    flex-direction: column;  /* Stack items vertically */
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    font-size: 25px;
-    font-weight: bold;
-  }
+}
 
-  .card-icon {
-    font-size: 40px; /* Adjust icon size */
-    margin-top: 2rem; /* Add some space between the suit text and icon */
-  }
+.card-rank-body {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  font-size: 25px;
+  font-weight: bold;
+}
 
-  .ng-container {
-    flex-direction: column;
-    
-  }
-  
-  .red-suit {
-    color: red; /* Red for Hearts and Diamonds */
-  }
-  
-  .black-suit {
-    color: black; /* Black for Clubs and Spades */
-  }
-  
-  .buttons-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-    padding-top: 0;
- 
-  }
+.card-icon {
+  font-size: 40px; /* Adjust icon size */
+  margin-top: 2rem; /* Add some space between the suit text and icon */
+}
 
-  .start-new-container {
-    display: flex;
-    justify-content: center; /* Horizontally center the button */
-    align-items: center;     /* Vertically center the button */
-    width: 100%;             /* Ensure the container spans the entire width */
-  }
-  
-  .start-new-button {
-    background-color: #fb8500;
-    font-size: 20px;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    border: none;
-  }
+.ng-container {
+  flex-direction: column;
+}
 
-  .score-container {
-    display:flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items:normal;
-    
-    color: white;
-    line-height: 1rem;
-    font-size: 20px;
-    text-align: center;
-    width: 100%;
-  }
+.red-suit {
+  color: red; /* Red for Hearts and Diamonds */
+}
 
-  .score-box{
-    display:flex;
-    justify-content: center;
-    flex-direction: row;
-    background-color:#003566;
-    border: solid 3px white;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    border-radius: 0.5rem;
-    margin-bottom: 3rem;
-  }
+.black-suit {
+  color: black; /* Black for Clubs and Spades */
+}
 
-  .correct-answer {
-    background-color: green;
-    font-weight: bold;
-    color: white;
-    margin-top:2rem;
-    padding: 0.5rem;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0.5rem;
-  }
-  
-  .incorrect-answer {
-    background-color: red;
-    font-weight: bold;
-    color: white;
-    margin-top:0.5rem;
-    padding: 0.5rem;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0.5rem;
-  }
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  padding-top: 0;
+}
 
-  .jokers-button {
-    position: absolute;
-    top: 5rem;
-    left: 0.5rem;
-    font-size: 15px;
-    padding: 1rem;
-    border: 3px solid white;
-    color:white;
-    font-weight: 700;
-    background-color:#003566;
-  }
+.start-new-container {
+  display: flex;
+  justify-content: center; /* Horizontally center the button */
+  align-items: center; /* Vertically center the button */
+  width: 100%; /* Ensure the container spans the entire width */
+}
 
-  .jokers-button:hover {
-    background-color: #219EBC;
-    color: white;
-  }
+.start-new-button {
+  background-color: #fb8500;
+  font-size: 20px;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+}
 
+.score-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: normal;
+
+  color: white;
+  line-height: 1rem;
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.score-box {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color: #003566;
+  border: solid 3px white;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.correct-answer {
+  background-color: green;
+  font-weight: bold;
+  color: white;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+}
+
+.incorrect-answer {
+  background-color: red;
+  font-weight: bold;
+  color: white;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+}
+
+.jokers-button {
+  position: absolute;
+  top: 5rem;
+  left: 0.5rem;
+  font-size: 15px;
+  padding: 1rem;
+  border: 3px solid white;
+  color: white;
+  font-weight: 700;
+  background-color: #003566;
+}
+
+.jokers-button:hover {
+  background-color: #219ebc;
+  color: white;
+}

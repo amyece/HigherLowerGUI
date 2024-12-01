@@ -4,34 +4,34 @@ import { GameService } from '../game.service';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.css']
+  styleUrls: ['./game.component.css'],
 })
 export class GameComponent {
   gameState: any = {};
   guess: string = '';
   resultMessage: string = '';
-  currentCard: { rank: string, suit: string } = { rank: '', suit: '' };
+  currentCard: { rank: string; suit: string } = { rank: '', suit: '' };
   gameOver: boolean = false;
   includeJokers: boolean = false;
 
-    // A map for face card conversions
-    rankMap: { [key: number]: string } = {
-      1: 'A',
-      11: 'J',
-      12: 'Q',
-      13: 'K'
-    };
+  // A map for face card conversions (so instead of 1 being displayed on the card, Ace will be displayed - more realistic card design)
+  rankMap: { [key: number]: string } = {
+    1: 'A',
+    11: 'J',
+    12: 'Q',
+    13: 'K',
+  };
+ 
+  isJoker(card: any): boolean {
+    return card.suit === 'Joker';
+  }
 
-    isJoker(card: any): boolean {
-      return card.suit === 'Joker';
-    }  
+  constructor(private gameService: GameService) {}
 
-  constructor(private gameService: GameService) { }
-
-toggleJokers() {
-this.includeJokers = !this.includeJokers;
- this.startNewGame();
- }
+  toggleJokers() {
+    this.includeJokers = !this.includeJokers;
+    this.startNewGame();
+  }
 
   ngOnInit(): void {
     this.startNewGame();
@@ -50,30 +50,32 @@ this.includeJokers = !this.includeJokers;
     );
   }
 
-    // Convert rank to string using the rank map, or fallback to the number if it's not a face card
-    convertRank(rank: number): string {
-      // If the rank is in the map (11, 12, 13), return the corresponding string
-      return this.rankMap[rank] || rank.toString();
-    }
+  // Convert rank to string using the rank map, or fallback to the number if it's not a face card
+  convertRank(rank: number): string {
+    // If the rank is in the map (11, 12, 13), return the corresponding string
+    return this.rankMap[rank] || rank.toString();
+  }
 
   makeGuess(guess: string): void {
     if (guess) {
       this.gameService.makeGuess(guess).subscribe(
         (message) => {
-          this.resultMessage = message;  // Display the result message
-          this.getGameState();            // Fetch the updated game state
-          
-          if (this.resultMessage === 'Incorrect!' && this.gameState?.score === 0) {
-            this.gameOver = true;  // Set the game over flag
+          this.resultMessage = message; // Display the result message
+          this.getGameState(); // Fetch the updated game state
+
+          if (
+            this.resultMessage === 'Incorrect!' &&
+            this.gameState?.score === 0
+          ) {
+            this.gameOver = true; // Set the game over flag
           }
 
-          // Hide the result message after 2 seconds
-          if(this.resultMessage === 'Correct!'){
+          // Hide the result message after a short period so it is not constantly on the screen
+          if (this.resultMessage === 'Correct!') {
             setTimeout(() => {
               this.resultMessage = '';
-            }, 1500);  // 2000ms = 2 seconds
+            }, 1500); 
           }
-          
         },
         (error) => {
           console.error('Error making guess', error);
@@ -89,7 +91,7 @@ this.includeJokers = !this.includeJokers;
 
         // Check if the game is over (score is 0, no current card)
         if (state.score === 0) {
-          this.gameOver = true;  // Game is over
+          this.gameOver = true; // Game is over
         }
       },
       (error) => {
@@ -97,5 +99,4 @@ this.includeJokers = !this.includeJokers;
       }
     );
   }
-  
 }
