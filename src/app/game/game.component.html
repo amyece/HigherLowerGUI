@@ -1,3 +1,4 @@
+
 <div class="game-container">
     <h1>Higher or Lower Game</h1>
    
@@ -65,17 +66,15 @@
   
     <!-- Buttons for Higher and Lower -->
   <div class="buttons-container">
-    <button class="guess-buttons" (click)="makeGuess('higher')">Higher</button>
-    <button class="guess-buttons" (click)="makeGuess('lower')">Lower</button>
+    <button class="guess-buttons" (click)="makeGuess('higher')" [disabled]="gameOver">Higher</button>
+    <button class="guess-buttons" (click)="makeGuess('lower')" [disabled]="gameOver">Lower</button>
   </div>
 
-  
-    <div *ngIf="resultMessage">
-      <p [ngClass]="{'correct-answer': resultMessage === 'Correct!', 'incorrect-answer': resultMessage === 'Incorrect!'}">
-        {{ resultMessage }}
-      </p>
-    </div>
+   <div *ngIf="gameOver">
   <div class="start-new-container">
     <button class="start-new-button" (click)="startNewGame()">Start New Game</button>
   </div>
+</div> 
+
   </div>
+</div>

@@ -28,6 +28,10 @@
     padding: 1.5rem;
   }
 
+  .guess-buttons:disabled{
+    background-color: #6D6875;
+  }
+
   .start-new-button{
     background-color:  #ffb703;
   }
@@ -152,3 +156,16 @@
     padding: 0.5rem;
     color: white;
   }
+
+  .game-over {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 50px;
+  }
+  
+  .game-over p {
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+ 

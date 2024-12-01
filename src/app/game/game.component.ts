@@ -11,6 +11,7 @@ export class GameComponent {
   guess: string = '';
   resultMessage: string = '';
   currentCard: { rank: string, suit: string } = { rank: '', suit: '' };
+  gameOver: boolean = false;
 
   constructor(private gameService: GameService) { }
 
@@ -23,6 +24,7 @@ export class GameComponent {
       (data) => {
         this.gameState = data;
         this.resultMessage = '';
+        this.gameOver = false;
       },
       (error) => {
         console.error('Error starting game', error);
@@ -36,6 +38,10 @@ export class GameComponent {
         (message) => {
           this.resultMessage = message;  // Display the result message
           this.getGameState();            // Fetch the updated game state
+          
+          if (this.resultMessage === 'Incorrect!' && this.gameState?.score === 0) {
+            this.gameOver = true;  // Set the game over flag
+          }
         },
         (error) => {
           console.error('Error making guess', error);
@@ -48,6 +54,11 @@ export class GameComponent {
     this.gameService.getGameState().subscribe(
       (state) => {
         this.gameState = state;
+
+        // Check if the game is over (score is 0, no current card)
+        if (state.score === 0 && !state.currentCard) {
+          this.gameOver = true;  // Game is over
+        }
       },
       (error) => {
         console.error('Error fetching game state', error);
