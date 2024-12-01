@@ -1,0 +1,80 @@
+<div class="game-container">
+    <h1>Higher or Lower Game</h1>
+   
+    <div *ngIf="gameState?.currentCard">
+      <p><strong>Current Card:</strong> {{ gameState.currentCard }}</p>
+    </div>
+  
+    <div *ngIf="gameState?.score !== undefined">
+      <p><strong>Score:</strong> {{ gameState.score }}</p>
+    </div>
+
+    <div *ngIf="gameState?.currentCard">
+    <div class="card-container">
+      <!-- Card display -->
+      <div class="card">
+        <div class="card-header">
+          <!-- Rank and Suit at top-left and top-right -->
+            <span class="card-rank"
+            [ngClass]="{
+              'red-suit': gameState?.currentCard?.suit === 'Hearts' || gameState?.currentCard?.suit === 'Diamonds',
+              'black-suit': gameState?.currentCard?.suit === 'Clubs' || gameState?.currentCard?.suit === 'Spades'
+            }">{{ gameState.currentCard.rank }}</span>
+          <span class="card-rank"
+          [ngClass]="{
+            'red-suit': gameState?.currentCard?.suit === 'Hearts' || gameState?.currentCard?.suit === 'Diamonds',
+            'black-suit': gameState?.currentCard?.suit === 'Clubs' || gameState?.currentCard?.suit === 'Spades'
+          }">{{ gameState.currentCard.rank }}</span>
+        </div>
+        <div class="card-body">
+          <!-- Central rank representation -->
+          <div class="card-rank-body"
+          [ngClass]="{
+            'red-suit': gameState?.currentCard?.suit === 'Hearts' || gameState?.currentCard?.suit === 'Diamonds',
+            'black-suit': gameState?.currentCard?.suit === 'Clubs' || gameState?.currentCard?.suit === 'Spades'
+          }">
+          <ng-container *ngIf="gameState?.currentCard?.suit === 'Hearts'">
+            <i class="fas fa-heart" style="color: red;"></i>
+          </ng-container>
+          <ng-container *ngIf="gameState?.currentCard?.suit === 'Diamonds'">
+            <i class="fas fa-diamond" style="color: red;"></i>
+          </ng-container>
+          <ng-container *ngIf="gameState?.currentCard?.suit === 'Clubs'">
+            <i class="fas fa-club" style="color: black;"></i>
+          </ng-container>
+          <ng-container *ngIf="gameState?.currentCard?.suit === 'Spades'">
+            <i class="fas fa-heart" style="color: black;"></i>
+          </ng-container>
+       
+          {{ gameState.currentCard.suit }}</div>
+        </div>
+        <div class="card-footer">
+          <!-- Rank and Suit at bottom-left and bottom-right -->
+          <span class="card-rank"
+          [ngClass]="{
+            'red-suit': gameState?.currentCard?.suit === 'Hearts' || gameState?.currentCard?.suit === 'Diamonds',
+            'black-suit': gameState?.currentCard?.suit === 'Clubs' || gameState?.currentCard?.suit === 'Spades'
+          }">{{ gameState.currentCard.rank }}</span>
+          <span class="card-rank"
+          [ngClass]="{
+            'red-suit': gameState?.currentCard?.suit === 'Hearts' || gameState?.currentCard?.suit === 'Diamonds',
+            'black-suit': gameState?.currentCard?.suit === 'Clubs' || gameState?.currentCard?.suit === 'Spades'
+          }">{{ gameState.currentCard.rank }}</span>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Buttons for Higher and Lower -->
+  <div class="buttons-container">
+    <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" (click)="makeGuess('higher')">Higher</button>
+    <button (click)="makeGuess('lower')">Lower</button>
+  </div>
+
+  
+    <div *ngIf="resultMessage">
+      <p>{{ resultMessage }}</p>
+    </div>
+  
+    <button (click)="startNewGame()">Start New Game</button>
+  </div>
+  
