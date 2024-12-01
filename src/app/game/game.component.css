@@ -1,16 +1,40 @@
 .game-container {
     text-align: center;
-    margin-top: 50px;
+    /* background-color: #023047; */
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  h1{
+    padding: 0.5rem;
+    color:black;
   }
   
   button{
     background-color: #219EBC;
     color: white;
-    font-weight: bold;
+    font-size: 20px;
     padding: 1rem;
     margin: 0.5rem;
     border-radius: 0.5rem;
     border: none;
+  }
+
+  .guess-buttons{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 1.5rem;
+  }
+
+  .start-new-button{
+    background-color:  #ffb703;
+  }
+
+  .start-new-button:hover {
+    background-color:#fb8500;
+    color: white;
   }
 
   button:hover {
@@ -23,7 +47,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 2rem;
+    padding: 2rem;
   }
   
   .card {
@@ -37,32 +61,49 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    padding: 0.5rem;
   }
   
   .card-header, .card-footer {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 5px;
     font-weight: bold;
+    font-size: 25px;
+    padding-right: 1rem;
+    padding-left: 1rem;
   }
   
   
   .card-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    font-size: 40px;
-    font-weight: bold;
+  display: flex;
+  flex-direction: column;  /* Stack items vertically */
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  font-size: 25px;
+  font-weight: bold;
   }
   
   .card-rank-body {
-    font-size: 36px;
-    color: #333;
+    display: flex;
+    flex-direction: column;  /* Stack items vertically */
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    font-size: 25px;
+    font-weight: bold;
   }
 
+  .card-icon {
+    font-size: 40px; /* Adjust icon size */
+    margin-top: 2rem; /* Add some space between the suit text and icon */
+  }
+
+  .ng-container {
+    flex-direction: column;
+    
+  }
   
   .red-suit {
     color: red; /* Red for Hearts and Diamonds */
@@ -76,5 +117,38 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 2rem;
+    padding: 0.5rem;
+    padding-top: 0;
+ 
+  }
+
+  .start-new-container{
+    padding: 0.5rem;
+  }
+
+  .score-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0.5rem;
+    background-color:#219EBC;
+    color: white;
+    line-height: 1rem;
+    font-size: 20px;
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+  .correct-answer {
+    background-color: green;
+    font-weight: bold;
+    color: white;
+    padding: 0.5rem;
+  }
+  
+  .incorrect-answer {
+    background-color: red;
+    font-weight: bold;
+    padding: 0.5rem;
+    color: white;
   }
