@@ -13,6 +13,14 @@ export class GameComponent {
   currentCard: { rank: string, suit: string } = { rank: '', suit: '' };
   gameOver: boolean = false;
 
+    // A map for face card conversions
+    rankMap: { [key: number]: string } = {
+      1: 'A',
+      11: 'J',
+      12: 'Q',
+      13: 'K'
+    };
+
   constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
@@ -32,6 +40,12 @@ export class GameComponent {
     );
   }
 
+    // Convert rank to string using the rank map, or fallback to the number if it's not a face card
+    convertRank(rank: number): string {
+      // If the rank is in the map (11, 12, 13), return the corresponding string
+      return this.rankMap[rank] || rank.toString();
+    }
+
   makeGuess(guess: string): void {
     if (guess) {
       this.gameService.makeGuess(guess).subscribe(
@@ -42,6 +56,14 @@ export class GameComponent {
           if (this.resultMessage === 'Incorrect!' && this.gameState?.score === 0) {
             this.gameOver = true;  // Set the game over flag
           }
+
+          // Hide the result message after 2 seconds
+          if(this.resultMessage === 'Correct!'){
+            setTimeout(() => {
+              this.resultMessage = '';
+            }, 1500);  // 2000ms = 2 seconds
+          }
+          
         },
         (error) => {
           console.error('Error making guess', error);
@@ -56,7 +78,7 @@ export class GameComponent {
         this.gameState = state;
 
         // Check if the game is over (score is 0, no current card)
-        if (state.score === 0 && !state.currentCard) {
+        if (state.score === 0) {
           this.gameOver = true;  // Game is over
         }
       },
@@ -65,7 +87,5 @@ export class GameComponent {
       }
     );
   }
-
+  
 }
-
-
